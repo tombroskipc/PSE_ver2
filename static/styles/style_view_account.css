@@ -1,0 +1,47 @@
+:root {
+    --primary-color: rgb(255, 132, 0);
+}
+
+body, html {
+    background-image: url("../img/background_for_pre_login.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.change-avatar {
+    font-weight: 800;
+    color: white;
+    margin-top: 10em;
+    text-align: center;
+}
+
+.chooing-option {
+    margin: auto;
+    text-align: center;
+    font-weight: 600;
+	list-style-type: none;
+	font-family: "Bell Gothic Std Light";
+    padding: 0px;
+}
+
+a {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 1em;
+    width: 70%;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    color: white;
+    border: 0px solid grey;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1.2em;
+
+}
+

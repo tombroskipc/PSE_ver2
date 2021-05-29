@@ -1,0 +1,194 @@
+from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_login import login_required, UserMixin, LoginManager, login_user, logout_user
+from flask_sqlalchemy import SQLAlchemy
+from flask_nav import Nav
+from flask_nav.elements import Navbar, Subgroup, View, Link, Separator
+
+
+main = Flask(__name__)
+nav = Nav(main)
+
+
+nav.register_element('my_navbar', Navbar(
+    'thenav',
+    View('Home', 'index'),
+    View('Login', 'login'),
+    View('Sign up', 'signup'),
+))
+
+
+main.config['SECRET_KEY'] = 'my_secret_key'
+main.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+
+db = SQLAlchemy(main)
+db.init_app(main)
+
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    password = db.Column(db.String(100), nullable=False)
+
+
+class MostCommonDishes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    price = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Dish %r>' % self.id
+
+
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(main)
+
+
+@main.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@main.route('/login', methods=['POST'])
+def login_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user or password != user.password:
+        flash('Please check your login details and try again.')
+        return redirect(url_for('login'))
+
+    login_user(user)
+
+    return redirect(url_for('menu_option'))
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+@main.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+
+@main.route('/signup', methods=['POST'])
+def signup_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = User.query.filter_by(email=email).first()
+
+    if user:
+        flash('email address already exists.')
+        return redirect(url_for('signup'))
+
+    new_user = User(email=email, password=password)
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    return redirect(url_for('login'))
+
+
+@main.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
+
+
+@main.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+
+@main.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+
+@main.route('/menu_option')
+@login_required
+def menu_option():
+    return render_template('menu_option.html')
+
+
+@main.route("/view_menu")
+@login_required
+def view_menu():
+    return render_template('view_option/view_menu.html')
+
+
+@main.route("/view_account")
+@login_required
+def view_account():
+    return render_template('view_option/view_account.html')
+
+
+@main.route("/contact_us")
+@login_required
+def contact_us():
+    return render_template('view_option/contact_us.html')
+
+
+@main.route('/most_common_dishes', methods=['GET'])
+def most_common_dishes():
+    dishes = MostCommonDishes.query.order_by(MostCommonDishes.id).all()
+    return render_template('view_option/view_menu/most_common_dishes.html', dishes=dishes)
+
+
+@main.route('/most_common_dishes_manager', methods=['POST', 'GET'])
+def most_common_dishes_manager():
+    if request.method == 'POST':
+        input_name = request.form['name']
+        input_price = request.form['price']
+        new_dish = MostCommonDishes(name=input_name, price=input_price)
+
+        try:
+            db.session.add(new_dish)
+            db.session.commit()
+            return redirect('/most_common_dishes_manager')
+        except:
+            return 'There was an issue adding your dish'
+
+    else:
+        dishes = MostCommonDishes.query.order_by(MostCommonDishes.id).all()
+        return render_template('most_common_dishes_manager.html', dishes=dishes)
+
+
+@main.route('/most_common_dishes_update/<int:id>', methods=['GET', 'POST'])
+def most_common_dishes_update(id):
+    dish = MostCommonDishes.query.get_or_404(id)
+
+    if request.method == 'POST':
+        dish.name = request.form['name']
+        dish.price = request.form['price']
+
+        try:
+            db.session.commit()
+            return redirect('/most_common_dishes_manager')
+        except:
+            return 'There was an issue updating your dish'
+
+    else:
+        return render_template('most_common_dishes_update.html', dish=dish)
+
+
+@main.route('/most_common_dishes_delete/<int:id>')
+def most_common_dishes_delete(id):
+    task_to_delete = MostCommonDishes.query.get_or_404(id)
+
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/most_common_dishes_manager')
+    except:
+        return 'There was a problem deleting that task'
+
+
+if __name__ == '__main__':
+    main.run(debug=True)

@@ -1,0 +1,35 @@
+:root {
+    --primary-color: rgb(255, 132, 0);
+}
+
+body, html {
+    background-image: url("../img/background_for_pre_login.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.chooing-option {
+    margin: auto;
+    text-align: center;
+    font-weight: 800;
+	list-style-type: none;
+	font-family: "Bell Gothic Std Light";
+    padding: 0px;
+}
+
+
+.chooing-type {
+    margin: auto;
+    text-align: center;
+    font-weight: 800;
+	list-style-type: none;
+	font-family: "Bell Gothic Std Light";
+    padding: 0px;
+}
+
+.breaking {
+    margin-top: 40%;
+    margin-bottom: -2em;
+}

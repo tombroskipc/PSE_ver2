@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head%} 
+    <title>View account</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_view_account.css') }}">
+    
+{%endblock%}
+{% block body%}
+
+    <h1 class = "title has-text-centered has-text-white">
+        Change avatar
+    </h1>
+
+    <ul class="chooing-option">
+        <li><a href="#">View profile</a></li>
+        <li><a href="#">Change password</a></li>
+        <li><a href="#">Add new payment</a></li>
+        <li><a href="#">Order history</a></li>
+        <li><a href="#">Coupon</a></li>
+    </ul>
+{%endblock%}
+

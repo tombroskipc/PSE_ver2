@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head%} 
+
+    <title>Restaurant POS</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
+{%endblock%}
+
+{% block body%}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<body>
+    <h1 class = "has-text-centered title has-text-white is-size-1 is-italic">
+        Restaurant POS
+    </h1>
+    <a class = "menu-option" href="{{ url_for('view_menu') }}">View menu</a>
+        <a class = "menu-option" href="{{ url_for('view_account') }}">View account</a>
+        <a class = "menu-option" href="{{ url_for('contact_us') }}">Contact us</a>
+
+
+{%endblock%}

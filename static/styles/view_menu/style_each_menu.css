@@ -1,0 +1,44 @@
+:root {
+    --primary-color: rgb(255, 132, 0);
+}
+
+h1{
+    font-weight: 1500;
+}
+
+body, html {
+    background-color:var(--primary-color)
+}
+.most-common-dishes {
+    position: relative;
+    width: 100%;
+    margin-top: -10%;
+  }
+
+.box{
+    width: 83.3333%;
+    margin-left: 8.3333%;
+
+}
+.choosing-option {
+    display: inline-block;
+    margin-top: -20%;
+    text-align: center;
+    font-weight: 800;
+	font-family: "Bell Gothic Std Light";
+}
+
+
+.chooing-type {
+    margin: auto;
+    text-align: center;
+    font-weight: 800;
+	list-style-type: none;
+	font-family: "Bell Gothic Std Light";
+    padding: 0px;
+}
+
+.breaking {
+    margin-top: -10%;
+    margin-bottom: -2em;
+}

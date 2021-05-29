@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head%} 
+<title>Restaurant Pos</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
+
+{%endblock%}
+
+</style>
+{% block body%}
+
+<section class="section">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1 class=" is-size-1 title has-text-centered">
+            <a class = "has-text-white is-italic " href="{{ url_for('login') }}">
+                Restaurant POS
+            </a>     
+        </h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <img class = "center-img" src="../static/img/Qr.png" alt="qr-code" class = center-img>
+          <h2 class="is-size-2 subtitle has-text-centered has-text-Light">Scan to proceed</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{%endblock%}

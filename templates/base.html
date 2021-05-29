@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_nav.css') }}">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+  {{ nav.my_navbar.render() }}
+    {% block body %}{% endblock %}
+    <!-- <footer class="footer">
+        <div class="content has-text-centered is-italic has-text-grey">
+          <p>KSTN fake project </p>
+          <p>Copyright@ 2021</p>
+        </div>
+      </footer> -->
+</body>
+</html>
