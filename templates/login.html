@@ -7,7 +7,19 @@
 {% block body%}
 <br>
 <br>
-
+{% if current_user.is_authenticated %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="has-text-centered is-size-3 has-text-weight-bold has-text-white">
+        PLEASE LOGOUT BEFORE LOG INTO ANOTHER ACCOUNT
+</div>
+<a class = "box has-text-centered" href="{{ url_for('menu_option') }}">Menu</a>
+<a class = "box has-text-centered" href="{{ url_for('logout') }}">Logout</a>
+{% else %}
 <div class="column is-4 is-offset-4">
     <h3 class="title has-text-centered is-size-1 has-text-white">Login</h3>
     <br>
@@ -39,4 +51,5 @@
         <a href="{{ url_for('signup') }}" class = "button is-block is-info is-large is-fullwidth">Signup</a>
     </div>
 </div>
+{% endif %}
 {%endblock%}

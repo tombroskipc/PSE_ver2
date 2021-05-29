@@ -20,6 +20,10 @@ a {
     color: var(--primary-color)
 }
 
+box{
+    color: var(--primary-color);
+}
+
 .scan-to-proceed {
     width: auto; /* 189px */
     height: auto; /* 28px */

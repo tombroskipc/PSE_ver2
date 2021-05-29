@@ -1,21 +1,8 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_login import login_required, UserMixin, LoginManager, login_user, logout_user
+from flask_login import login_required, UserMixin, LoginManager, login_user, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
-from flask_nav import Nav
-from flask_nav.elements import Navbar, Subgroup, View, Link, Separator
-
 
 main = Flask(__name__)
-nav = Nav(main)
-
-
-nav.register_element('my_navbar', Navbar(
-    'thenav',
-    View('Home', 'index'),
-    View('Login', 'login'),
-    View('Sign up', 'signup'),
-))
-
 
 main.config['SECRET_KEY'] = 'my_secret_key'
 main.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -27,6 +14,7 @@ db.init_app(main)
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
+    name = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
 
 
@@ -49,6 +37,11 @@ def login():
     return render_template('login.html')
 
 
+current_user_email = ''
+current_user_name = ''
+current_user_payment = 0
+
+
 @main.route('/login', methods=['POST'])
 def login_post():
     email = request.form.get('email')
@@ -60,8 +53,12 @@ def login_post():
         flash('Please check your login details and try again.')
         return redirect(url_for('login'))
 
-    login_user(user)
+    login_user(user, remember=True)
+    current_user_email = user.email
+    current_user_name = user.name
 
+    if user.email == 'tombroskipc@gmail.com':
+        return redirect('manager')
     return redirect(url_for('menu_option'))
 
 
@@ -78,6 +75,7 @@ def signup():
 @main.route('/signup', methods=['POST'])
 def signup_post():
     email = request.form.get('email')
+    name = request.form.get('name')
     password = request.form.get('password')
 
     user = User.query.filter_by(email=email).first()
@@ -86,7 +84,7 @@ def signup_post():
         flash('email address already exists.')
         return redirect(url_for('signup'))
 
-    new_user = User(email=email, password=password)
+    new_user = User(email=email, name = name, password=password)
 
     db.session.add(new_user)
     db.session.commit()
@@ -98,12 +96,13 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('index'))
 
 
 @main.route('/profile')
+@login_required
 def profile():
-    return render_template('profile.html')
+    return render_template('profile.html', name=current_user.name)
 
 
 @main.route('/', methods=['GET'])
@@ -188,6 +187,11 @@ def most_common_dishes_delete(id):
         return redirect('/most_common_dishes_manager')
     except:
         return 'There was a problem deleting that task'
+
+
+@main.route('/manager')
+def manager():
+    return render_template('manager.html')
 
 
 if __name__ == '__main__':
