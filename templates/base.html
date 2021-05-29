@@ -19,5 +19,16 @@
         </div>
       </footer> -->
 
+      {% if current_user.is_authenticated and current_user.id != 1 and request.url_rule.endpoint != "confirm_order" %}
+      <a href="{{ url_for('confirm_order') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
+        Confirm {{current_user.number_of_order}} 
+        {% if current_user.number_of_order <=1 %}
+          order
+        {% else %}
+          orders
+        {% endif %}
+      </a>
+      {% endif %}
+
 </body>
 </html>

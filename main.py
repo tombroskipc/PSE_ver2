@@ -16,6 +16,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), nullable=False, unique=True)
     name = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
+    number_of_order = db.Column(db.Integer, default=0)
+    total_price = db.Column(db.Integer, default=0)
 
 
 class MostCommonDishes(db.Model):
@@ -25,6 +27,13 @@ class MostCommonDishes(db.Model):
 
     def __repr__(self):
         return '<Dish %r>' % self.id
+
+
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer)
+    name = db.Column(db.String(200), nullable=False)
+    price = db.Column(db.Integer)
 
 
 login_manager = LoginManager()
@@ -54,10 +63,8 @@ def login_post():
         return redirect(url_for('login'))
 
     login_user(user, remember=True)
-    current_user_email = user.email
-    current_user_name = user.name
 
-    if user.email == 'tombroskipc@gmail.com':
+    if user.id == 1:
         return redirect('manager')
     return redirect(url_for('menu_option'))
 
@@ -140,6 +147,26 @@ def most_common_dishes():
     return render_template('view_option/view_menu/most_common_dishes.html', dishes=dishes)
 
 
+@main.route('/most_common_dishes/<int:id>', methods=['GET', 'POST'])
+def most_common_dishes_post(id):
+    dish = MostCommonDishes.query.get_or_404(id)
+    current_user_id = current_user.id
+    current_user_object = User.query.get_or_404(current_user_id)
+    current_user_object.number_of_order += 1
+    current_user_object.total_price += dish.price
+    order_name = dish.name
+    order_price = dish.price
+    new_order = Order(customer_id=current_user_id, name=order_name, price=order_price)
+
+    try:
+        db.session.add(new_order)
+        db.session.commit()
+    except:
+        return 'There was an issue adding your dish'
+
+    return redirect('/most_common_dishes')
+
+
 @main.route('/most_common_dishes_manager', methods=['POST', 'GET'])
 def most_common_dishes_manager():
     if request.method == 'POST':
@@ -192,6 +219,31 @@ def most_common_dishes_delete(id):
 @main.route('/manager')
 def manager():
     return render_template('manager.html')
+
+
+class OrdersQuery:
+    order_query = {}
+    order_price = []
+
+
+@main.route('/confirm_order')
+def confirm_order():
+    orders_orders = Order.query.filter_by(customer_id=current_user.id).all()
+    orders = OrdersQuery()
+
+    for order in orders_orders:
+        if order.name not in orders.order_query.items():
+            orders.order_query[order.name] = 0
+            orders.order_price.append(order.price)
+        orders.order_query[order.name] += 1
+    
+    final_order = []
+    price_index = 0
+    for key, value in orders.order_query.items():
+        final_order.append((key, value, orders.order_price[price_index]))
+        price_index += 1
+        
+    return render_template('confirm_order.html', orders=final_order)
 
 
 if __name__ == '__main__':

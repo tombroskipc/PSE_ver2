@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Confirm order</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/view_menu/style_confirm.css') }}">
+{% endblock %}
+
+{% block body %}
+<img src="../static/img/confirm.jpg" alt="">
+
+<h2 class="has-text-weight-bold has-text-black is-size-3">
+    Your order
+</h2>
+
+<section class="section has-text-weight-bold has-text-grey">
+    {% for order in orders %}
+    <div class="container">
+        <div class=" columns is-mobile">
+            <div class="column is-1">{{ order[1] }}x</div>
+            <div class="column is-8">{{ order[0] }}</div>
+            <div class="column is-3">${{ order[2] }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<section class="section">
+
+</section>
+
+{% endblock %}
