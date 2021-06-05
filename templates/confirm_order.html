@@ -2,15 +2,22 @@
 
 {% block head %}
 <title>Confirm order</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/view_menu/style_confirm.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_confirm.css') }}">
 {% endblock %}
 
 {% block body %}
 <img src="../static/img/confirm.jpg" alt="">
 
-<h2 class="has-text-weight-bold has-text-black is-size-3">
+<h2 class="has-text-weight-bold has-text-black is-size-3 py-2">
     Your order
 </h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
 
 <section class="section has-text-weight-bold has-text-grey">
     {% for order in orders %}
@@ -24,8 +31,22 @@
     {% endfor %}
 </section>
 
-<section class="section">
+<footer class="footer">
+    <section class="section">
+        <div class="container">
+            <div class=" columns is-mobile">
+                <div class="column is-4 confirm-text">
+                    <p class="has-text-grey has-text-weight-bold">Total</p>
+                    <p class="has-text-weight-bold">Price ${{current_user.total_price}}</p>                </div>
+                <div class="column is-2"></div>
+                <div class="column is-8">
+                    <form method="POST" action="/confirm_order">
+                    <button class="choosing-option">Order</button>
+                    </form>
+                </div>
+            </div>
+    </section>
+  </footer>
 
-</section>
-
+  
 {% endblock %}

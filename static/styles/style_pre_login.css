@@ -79,8 +79,8 @@ box{
     margin-top: 1.5em;
     color: white;
     border-radius: 8px;
-    width: 70%;
-    padding: 0.8em;
+    width: 100%;
+    padding: 1em;
     border: 0px solid grey;
     border-radius: 6px;
     background-color: var(--primary-color);
@@ -90,18 +90,20 @@ box{
 }
 
 .register-button {
+    cursor: pointer;
     display: block;
     margin: auto;
-    margin-top: 0.5em;
-    text-align: center;
+    font-weight: 600;
+    margin-top: 1.5em;
     color: white;
-    text-decoration: none;
     border-radius: 8px;
-    width: 70%;
-    padding: 0.5em;
+    width: 100%;
+    padding: 1em;
     border: 0px solid grey;
     border-radius: 6px;
     background-color: var(--primary-color);
+    box-sizing: border-box;
+    text-align: center;
     box-sizing: border-box;
 }
 
@@ -124,4 +126,3 @@ box{
     box-sizing: border-box;
     font-size: large;
 }
-

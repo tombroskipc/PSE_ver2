@@ -19,16 +19,41 @@
         </div>
       </footer> -->
 
-      {% if current_user.is_authenticated and current_user.id != 1 and request.url_rule.endpoint != "confirm_order" %}
+      {% if current_user.is_authenticated and current_user.id != 1 and request.url_rule.endpoint != "confirm_order" and request.url_rule.endpoint != "order_status" %}
+      {% if current_user.prepare_status > 0 %}
+      <a href="{{ url_for('order_status') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
+        Check your order status
+      </a>
+      {% else %}
       <a href="{{ url_for('confirm_order') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
         Confirm {{current_user.number_of_order}} 
         {% if current_user.number_of_order <=1 %}
-          order
+        order
         {% else %}
-          orders
+        orders
         {% endif %}
       </a>
       {% endif %}
+      {% endif %}
 
+
+      {% if current_user.is_authenticated %}
+      {% if  current_user.id != 1 %}
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <a href="{{ url_for('view_menu') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
+            Back to menu
+          </a>
+          <a href="{{ url_for('menu_option') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
+            Home
+          </a>
+          <a href="{{ url_for('logout') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
+            Log out
+          </a>
+        </div>
+      </footer>
+      {% endif %}
+      {% else %}
+      {% endif %}
 </body>
 </html>

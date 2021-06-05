@@ -1,5 +1,59 @@
+:root {
+  --primary-color: rgb(255, 132, 0);
+}
 .most-common-dishes {
-    position: relative;
-    width: 100%;
-    margin-top: -10%;
-  }
+  position: relative;
+  width: 100%;
+  margin-top: -10%;
+}
+
+.choosing-option {
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  width: 100%;
+  font-weight: 800;
+  border: 0px solid grey;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+  font-size: large;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.confirm-text {
+  margin-left: -10%;
+}
+
+.order-status-upper {
+  display: block;
+  background-color: var(--primary-color)
+}
+
+.three-dots {
+  margin-bottom: -0.8em;
+  margin-top: -0.5em;
+}
+
+.order-status-text {
+  margin-top: -3em;
+}
+
+.order-status-bar {
+  display: block;
+  width: 100%;
+  padding-top: 0.1em;
+  padding-bottom: 0.2em;
+  background-color: var(--primary-color)
+}
+
+.confirm-text-order-status {
+  margin-left: -1em;
+}

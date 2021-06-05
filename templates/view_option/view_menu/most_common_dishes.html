@@ -8,7 +8,13 @@
 {% block body%}
 <img src="../../../static/img/most_common_dishes.jpg" alt="">
 <div class="box choosing-option has-text-weight-bold">Most common dishes</div>
-
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
 <section class="section">
     {% for dish in dishes %}
     <div class="container">

@@ -11,8 +11,8 @@
         <div class=" columns is-vcentered has-text-centered">
             <div class="column is-12">
                 <a href="{{ url_for('most_common_dishes') }}" class="box has-text-centered has-text-weight-bold">Most common Dishes</a>
-                <a href="#" class="box has-text-centered has-text-weight-bold">New Dishes</a>
-                <a href="#" class="box has-text-centered has-text-weight-bold">Combo</a>
+                <a href="{{ url_for('new_dishes') }}" class="box has-text-centered has-text-weight-bold">New Dishes</a>
+                <a href="{{ url_for('combo') }}" class="box has-text-centered has-text-weight-bold">Combo</a>
             </div>
         </div>
         
@@ -20,36 +20,39 @@
 </section>
 
 
-<section class="section">
+<section class="section view-menu-breaking">
     <div class="container">
         <div class=" columns has-text-centered is-mobile">
             <div class="column is-5">
-                <a class = "box has-text-weight-bold has-text-black" href="">Appetizers</a>
+                <a class = "box has-text-weight-bold has-text-black" href="{{ url_for('appetizers') }}">Appetizers</a>
             </div>
             <div class="column is-2"></div>
             <div class="column is-5">
-                <a class = "box has-text-weight-bold has-text-black" href="">Soup</a>
+                <a class = "box has-text-weight-bold has-text-black" href="{{ url_for('soup') }}">Soup</a>
             </div>
         </div>
         <div class=" columns has-text-centered is-mobile">
             <div class="column is-5">
-                <a class = "box has-text-weight-bold has-text-black" href="">Salad</a>
+                <a class = "box has-text-weight-bold has-text-black" href="{{ url_for('salad') }}">Salad</a>
             </div>
             <div class="column is-2"></div>
             <div class="column is-5">
-                <a class = "box has-text-weight-bold has-text-black" href="">Main dishes</a>
+                <a class = "box has-text-weight-bold has-text-black" href="{{ url_for('main_dishes') }}">Main dishes</a>
             </div>
         </div>
         <div class=" columns has-text-centered is-mobile">
             <div class="column is-5">
-                <a class = "box has-text-weight-bold has-text-black" href="">Dessert</a>
+                <a class = "box has-text-weight-bold has-text-black" href="{{ url_for('dessert') }}">Dessert</a>
             </div>
             <div class="column is-2"></div>
             <div class="column is-5">
-                <a class = "box has-text-weight-bold has-text-black" href="">Drinks</a>
+                <a class = "box has-text-weight-bold has-text-black" href="{{ url_for('drinks') }}">Drinks</a>
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 {%endblock%}

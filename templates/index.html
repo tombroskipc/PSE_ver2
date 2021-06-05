@@ -9,25 +9,24 @@
 </style>
 {% block body%}
 
-<section class="section">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column">
-          <h1 class=" is-size-1 title has-text-centered">
-            <a class = "has-text-white is-italic " href="{{ url_for('login') }}">
-                Restaurant POS
-            </a>     
-        </h1>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <img class = "center-img" src="../static/img/Qr.png" alt="qr-code" class = center-img>
-          <h2 class="is-size-2 subtitle has-text-centered has-text-Light">Scan to proceed</h2>
-        </div>
-      </div>
-    </div>
-  </section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<body>
+    <h1 class = "has-text-centered title has-text-white is-size-1 is-italic">
+        Restaurant POS
+    </h1>
+    {% if current_user.is_authenticated %}
+    <a class = "menu-option" href="{{ url_for('menu_option') }}">Menu</a>
+    <a class = "menu-option" href="{{ url_for('view_account') }}">View account</a>
+    <a class = "menu-option" href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+    <a class = "menu-option" href="{{ url_for('login') }}">Login</a>
+    <a class = "menu-option" href="{{ url_for('signup') }}">Sign up</a>
+    {% endif %}
 
 {%endblock%}

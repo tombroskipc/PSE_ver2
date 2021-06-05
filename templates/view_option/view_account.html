@@ -7,16 +7,18 @@
 {%endblock%}
 {% block body%}
 
-    <h1 class = "title has-text-centered has-text-white">
-        Change avatar
-    </h1>
+<br>
+<br>
+<br>
 
     <ul class="chooing-option">
         <li><a href="{{ url_for('profile') }}">View profile</a></li>
         <li><a href="#">Change password</a></li>
         <li><a href="#">Add new payment</a></li>
         <li><a href="#">Order history</a></li>
-        <li><a href="#">Coupon</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
     </ul>
+
+
 {%endblock%}
 
