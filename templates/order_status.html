@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Order status</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_confirm.css') }}">
+{% endblock %}
+
+{% block body %}
+{% if current_user.prepare_status == 1 %}
+<section class="section order-status-upper">
+
+    <h1 class="has-text-centered has-text-black ">
+
+        <p class="" >Your order is submitted</p>
+        <p class="is-size-4 has-text-weight-bold">
+            Waiting for confirming order
+        </p>
+    </h1>
+    <p class="has-text-grey has-text-weight-bold is-size-2 has-text-centered three-dots">...</p>
+</section>
+
+<section class="section order-status-text">
+    <div class="container">
+        <div class=" columns has-text-centered is-mobile">
+            <div class="column is-4">
+                <p class="has-text-centered">Preparing</p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered">Delivering</p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered">Arrived</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+{% endif %}
+
+{% if current_user.prepare_status == 2 %}
+<section class="section order-status-upper">
+
+    <h1 class="has-text-centered has-text-black ">
+
+        <p class="" >Your food is being prepared</p>
+        <p class="is-size-3 has-text-weight-bold">
+            Food is being prepared
+        </p>
+    </h1>
+    <p class="has-text-grey has-text-weight-bold is-size-2 has-text-centered three-dots">...</p>
+</section>
+
+<section class="section order-status-text">
+    <div class="container">
+        <div class=" columns has-text-centered is-mobile">
+            <div class="column is-4">
+                <p class="has-text-centered has-text-weight-bold">Preparing</p>
+                <p class="box order-status-bar"></p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered">Delivering</p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered">Arrived</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+{% endif %}
+
+{% if current_user.prepare_status == 3 %}
+<section class="section order-status-upper">
+
+    <h1 class="has-text-centered has-text-black ">
+
+        <p class="" >Food is on the way</p>
+        <p class="is-size-3 has-text-weight-bold">
+            Your order í being delivered
+        </p>
+    </h1>
+    <p class="has-text-grey has-text-weight-bold is-size-2 has-text-centered three-dots">...</p>
+</section>
+
+<section class="section order-status-text">
+    <div class="container">
+        <div class=" columns has-text-centered is-mobile">
+            <div class="column is-4">
+                <p class="has-text-centered">Preparing</p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered has-text-weight-bold">Delivering</p>
+                <p class="box order-status-bar"></p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered">Arrived</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+{% endif %}
+
+{% if current_user.prepare_status == 4 %}
+<section class="section order-status-upper">
+
+    <h1 class="has-text-centered has-text-black ">
+
+        <p class="" >Food is served</p>
+        <p class="is-size-3 has-text-weight-bold">
+            Enjoy your food
+        </p>
+    </h1>
+    <p class="has-text-grey has-text-weight-bold is-size-2 has-text-centered three-dots">...</p>
+</section>
+
+<section class="section order-status-text">
+    <div class="container">
+        <div class=" columns has-text-centered is-mobile">
+            <div class="column is-4">
+                <p class="has-text-centered">Preparing</p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered">Delivering</p>
+            </div>
+            <div class="column is-4">
+                <p class="has-text-centered has-text-weight-bold">Arrived</p>
+                <p class="box order-status-bar"></p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+</section>
+{% endif %}
+
+{% if current_user.prepare_status != 4 %}
+<a href="{{ url_for("order_status") }}" class="box has-text-centered">Click here to update your order status</a>
+{% endif %}
+
+<section class="section has-text-weight-bold has-text-grey">
+    {% for order in orders %}
+    <div class="container">
+        <div class=" columns is-mobile">
+            <div class="column is-1">{{ order[1] }}x</div>
+            <div class="column is-8">{{ order[0] }}</div>
+            <div class="column is-3">${{ order[2] }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+
+
+<section class="section">
+    <div class="container">
+        <div class=" columns is-mobile">
+            <div class="column is-1">
+                <p class="has-text-grey has-text-weight-bold confirm-text-order-status">Total</p>
+            </div>
+            <div class="column is-8"></div>
+            <div class="column is-3">
+                <p class="has-text-weight-bold">${{current_user.total_price}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section order-status-text">
+    <div class="container">
+        <div class=" columns is-mobile">
+            <div class="column is-6">
+                Payment method:
+            </div>
+            <div class="column is-6">
+                <form method="POST" action="{{ url_for('order_status') }}">
+                    <div class="field">
+                      <div class="control">
+                        <div class="select is-dark">
+                          <select name="payment">
+                            <option> Cash </option>
+                            <option> Momo</option>
+                            <option> Credit card</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="button is-primary">Check out</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if current_user.prepare_status == 4 %}
+
+{% endif %}
+{% endblock %}
