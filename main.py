@@ -194,6 +194,8 @@ def logout():
 @main.route('/profile')
 @login_required
 def profile():
+    name = str(current_user.name)
+    user = current_user
     return render_template('profile.html', name=current_user.name)
 
 
@@ -232,6 +234,7 @@ def most_common_dishes_post(id):
     if current_user.prepare_status > 0:
         flash('Your current order is on the way')
         return redirect(url_for('most_common_dishes'))
+    current = current_user.name
     dish = MostCommonDishes.query.get_or_404(id)
     current_user_id = current_user.id
     current_user_object = User.query.get_or_404(current_user_id)
