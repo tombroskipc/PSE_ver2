@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head%}
+    <title>Combo</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/view_menu/style_each_menu.css') }}">
+
+{%endblock%}
+{% block body%}
+<img src="../../../static/img/combo.jpg" alt="">
+<div class="box choosing-option has-text-weight-bold">Combo</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
+<section class="section">
+    {% for dish in dishes %}
+    <div class="container">
+        <div class=" columns has-text-centered is-mobile">
+            <div class="column is-1"></div>
+            <a href="/combo/{{dish.id}}" class="column box has-text-centered is-8">
+                <div class="columns is-mobile">
+                    <div class="column is1">{{ dish.name }}</div>
+                    <div class="column is7"></div>
+                    <div class="column is4">${{ dish.price }}</div>
+                </div>
+            </a>
+            <div class="column is-1"></div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</section>
+
+
+{%endblock%}

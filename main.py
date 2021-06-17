@@ -19,7 +19,7 @@ class User(UserMixin, db.Model):
     number_of_order = db.Column(db.Integer, default=0)
     total_price = db.Column(db.Integer, default=0)
     prepare_status = db.Column(db.Integer, default=0)
-
+# cai user cua minh ne
 
 class MostCommonDishes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -100,7 +100,6 @@ class MainDishes(db.Model):
 
     def __repr__(self):
         return '<Dish %r>' % self.id
-
 
 
 
