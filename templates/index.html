@@ -1,32 +1,68 @@
 {% extends "base.html" %}
 
-{% block head%} 
-<title>Restaurant Pos</title>
+{% block head%}
+<title>OMeal</title>
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
-
 {%endblock%}
 
-</style>
 {% block body%}
+    <div class = "block">
+        <div class = "navbar" role="navigation" aria-label="main navigation">
+            <div class = "navbar-brand">
+                <a href = "#" class = "nav-item">
+                    <img src="../static/img/app_logo.jpg" alt = "site-logo" style = "max-height: 100px" class = "py-2 px-2">
+                </a>
+            </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+        <nav class = "navbar-left navbar-expand-lg navbar-light bg-light">
+            <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbar">
+                <span class = "navbar-toggler-icon"></span>
+            </button>
+            <div class = "collapse navbar-collapse" id = "navbar">
+                <div class = "navbar-nav">
+                    <a class = "nav-item" href = "">About us</a>
+                    <a class = "nav-item" href = "">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+        </div>
+    <script src = "index.js"></script>
+<script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
-<body>
-    <h1 class = "has-text-centered title has-text-white is-size-1 is-italic">
-        Restaurant POS
-    </h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     {% if current_user.is_authenticated %}
     <a class = "menu-option" href="{{ url_for('menu_option') }}">Menu</a>
     <a class = "menu-option" href="{{ url_for('view_account') }}">View account</a>
     <a class = "menu-option" href="{{ url_for('logout') }}">Logout</a>
+
+    <!-- Not login or sign up -->
     {% else %}
+
+    <h2 class = "has-text-centered title has-text-white is-size-1 is-italic"> Sign in to OMeal </h2>
     <a class = "menu-option" href="{{ url_for('login') }}">Login</a>
     <a class = "menu-option" href="{{ url_for('signup') }}">Sign up</a>
     {% endif %}
+
 
 {%endblock%}
