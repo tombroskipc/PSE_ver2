@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_login import login_required, UserMixin, LoginManager, login_user, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 
 main = Flask(__name__)
 
@@ -115,6 +117,8 @@ class OrderHistory(db.Model):
     order_id = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    total_price = db.Column(db.Integer)
+
 
 
 login_manager = LoginManager()
@@ -203,6 +207,26 @@ def profile():
     user = current_user
     return render_template('profile.html', name=current_user.name)
 
+@main.route('/order_history')
+@login_required
+def order_history():
+    orders_orders = OrderHistory.query.filter_by(customer_id=current_user.id).all()
+    order_histories = []
+    if len(orders_orders) > 0:
+        for order_meal_index in range(orders_orders[-1].order_id + 1):
+            orders = []
+            order_meal = [x for x in orders_orders if x.order_id == order_meal_index]
+            for order in order_meal:
+                flag = False
+                for index_i in range(len(orders)):
+                    if orders[index_i][0] == order.name:
+                        orders[index_i][1] += 1
+                        flag = True
+                if not flag:
+                    orders.append([order.name, 1, order.price, order.total_price])
+            order_histories.append(orders)
+
+    return render_template('/view_option/view_account/order_history.html', order_histories=order_histories)
 
 @main.route('/menu_option')
 @login_required
@@ -364,20 +388,20 @@ def order_status_post():
     select = str(select)
 
     customer = User.query.filter_by(id=current_user.id).first()
+    current_total_price = current_user.total_price
     customer.prepare_status = 0
     customer.number_of_order = 0
     customer.total_price = 0
 
     orders = Order.query.filter_by(customer_id=current_user.id).all()
-    order_id_all = OrderHistory.query.filter_by(customer_id=current_order.id).all()
+    order_id_all = OrderHistory.query.filter_by(customer_id=current_user.id).all()
     if len(order_id_all) == 0:
         current_order_id = 0
     else:
-        current_order_id = order_id_all[-1] + 1
+        current_order_id = int(order_id_all[-1] .order_id) + 1
     for order in orders:
-
         db.session.add(OrderHistory(customer_id=current_user.id, order_id=current_order_id,
-                                       name=order.name, price=order.price))
+                                    name=order.name, price=order.price, total_price=current_total_price))
         db.session.delete(order)
 
     db.session.commit()
