@@ -166,7 +166,7 @@
         </div>
     </div>
 </section>
-
+{% if current_user.prepare_status == 4 %}
 <section class="section order-status-text">
     <div class="container">
         <div class=" columns is-mobile">
@@ -192,8 +192,8 @@
         </div>
     </div>
 </section>
-
-{% if current_user.prepare_status == 4 %}
-
 {% endif %}
+
+
+
 {% endblock %}

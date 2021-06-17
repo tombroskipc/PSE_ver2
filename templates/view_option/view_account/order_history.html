@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head%}
+<title>Order History</title>
+{% endblock %}
+
+{% block body %}
+
+
+<section class="section has-text-weight-bold has-text-grey">
+  {% for order_history in order_histories %}
+    {% for order in order_history %}
+    <div class="container">
+        <div class=" columns is-mobile">
+            <div class="column is-1">{{ order[1] }}x</div>
+            <div class="column is-8">{{ order[0] }}</div>
+            <div class="column is-3">${{ order[2] }}</div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="container mt-2">
+      <div class=" columns is-mobile">
+          <div class="column is-1">Total price: </div>
+          <div class="column is-8"></div>
+          <div class="column is-3 has-text-primary">${{ order_history[0][3] }}</div>
+      </div>
+  </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+  {% endfor %}
+</section>
+
+{% endblock %}
