@@ -37,7 +37,11 @@
         </button>
         <div class = "collapse navbar-collapse" id = "navbar">
             <div class = "navbar-nav">
-              <a class = "nav-item" href = "{{ url_for('menu_option') }}">Menu</a>
+                {% if current_user.id == 1 %}
+                <a class = "nav-item" href = "{{ url_for('manager') }}">Menu</a>
+                {% else %}
+                <a class = "nav-item" href = "{{ url_for('view_menu') }}">Menu</a>
+                {% endif %}
                 <a class = "nav-item" href = "{{ url_for('view_account') }}">Account</a>
                 <a class = "nav-item" href = "{{ url_for('contact_us') }}">Contact</a>
             </div>

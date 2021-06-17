@@ -425,6 +425,28 @@ def customer_manager():
                            preparing=customers_preparing, delivering=customers_delivering, delivered=customers_delivered)
 
 
+@main.route('/order_manager')
+def order_manager():
+    orders_orders = OrderHistory.query.order_by(OrderHistory.date_created).all()
+    order_histories = []
+    if len(orders_orders) > 0:
+        for order_meal_index in range(orders_orders[-1].order_id + 1):
+            orders = []
+            order_meal = [x for x in orders_orders if x.order_id == order_meal_index]
+            for order in order_meal:
+                flag = False
+                for index_i in range(len(orders)):
+                    if orders[index_i][0] == order.name:
+                        orders[index_i][1] += 1
+                        flag = True
+                if not flag:
+                    orders.append([order.name, 1, order.price, order.total_price, order.date_created,
+                                   User.query.filter_by(id=order.customer_id).first().name])
+            order_histories.append(orders)
+
+    return render_template('order_manager.html', order_histories=order_histories)
+
+
 @main.route('/customer_manager_accept_order/<int:id>', methods=['POST', 'GET'])
 def customer_manager_accept_order(id):
     customer = User.query.filter_by(id=id).first()
