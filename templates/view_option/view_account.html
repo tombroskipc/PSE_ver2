@@ -3,20 +3,17 @@
 {% block head%} 
     <title>View account</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_view_account.css') }}">
-    
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
+
 {%endblock%}
 {% block body%}
-
 <br>
-<br>
-<br>
-
-    <ul class="chooing-option">
-        <li><a href="{{ url_for('profile') }}">View profile</a></li>
-        <li><a href="#">Change password</a></li>
-        <li><a href="#">Add new payment</a></li>
-        <li><a href="#">Order history</a></li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    <ul class="choosing-option">
+        <li><a class = "menu-option" href="{{ url_for('profile') }}">View profile</a></li>
+        <li><a class = "menu-option" href="#">Change password</a></li>
+        <li><a class = "menu-option" href="#">Add new payment</a></li>
+        <li><a class = "menu-option" href="#">Order history</a></li>
+        <li><a class = "menu-option" href="{{ url_for('logout') }}">Logout</a></li>
     </ul>
 
 

@@ -19,7 +19,7 @@ class User(UserMixin, db.Model):
     number_of_order = db.Column(db.Integer, default=0)
     total_price = db.Column(db.Integer, default=0)
     prepare_status = db.Column(db.Integer, default=0)
-# cai user cua minh ne
+
 
 class MostCommonDishes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -102,13 +102,19 @@ class MainDishes(db.Model):
         return '<Dish %r>' % self.id
 
 
-
-
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer)
     name = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Integer)
+
+
+class OrderHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, nullable=False)
+    order_id = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(200), nullable=False)
+    price = db.Column(db.Integer, nullable=False)
 
 
 login_manager = LoginManager()
@@ -363,7 +369,15 @@ def order_status_post():
     customer.total_price = 0
 
     orders = Order.query.filter_by(customer_id=current_user.id).all()
+    order_id_all = OrderHistory.query.filter_by(customer_id=current_order.id).all()
+    if len(order_id_all) == 0:
+        current_order_id = 0
+    else:
+        current_order_id = order_id_all[-1] + 1
     for order in orders:
+
+        db.session.add(OrderHistory(customer_id=current_user.id, order_id=current_order_id,
+                                       name=order.name, price=order.price))
         db.session.delete(order)
 
     db.session.commit()
@@ -373,6 +387,7 @@ def order_status_post():
 @main.route('/rating')
 def rating():
     return render_template('rating.html')
+
 
 @main.route('/customer_manager')
 def customer_manager():

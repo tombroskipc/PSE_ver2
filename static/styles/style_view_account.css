@@ -18,7 +18,7 @@ body, html {
     text-align: center;
 }
 
-.chooing-option {
+.choosing-option {
     margin: auto;
     text-align: center;
     font-weight: 600;
@@ -27,21 +27,5 @@ body, html {
     padding: 0px;
 }
 
-a {
-    display: inline-block;
-    text-align: center;
-    margin: auto;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    padding: 1em;
-    width: 70%;
-    background-color: var(--primary-color);
-    text-decoration: none;
-    color: white;
-    border: 0px solid grey;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 1.2em;
 
-}
 
