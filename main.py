@@ -118,7 +118,7 @@ class OrderHistory(db.Model):
     name = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     total_price = db.Column(db.Integer)
-
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 login_manager = LoginManager()
@@ -207,6 +207,7 @@ def profile():
     user = current_user
     return render_template('profile.html', name=current_user.name)
 
+
 @main.route('/order_history')
 @login_required
 def order_history():
@@ -223,10 +224,11 @@ def order_history():
                         orders[index_i][1] += 1
                         flag = True
                 if not flag:
-                    orders.append([order.name, 1, order.price, order.total_price])
+                    orders.append([order.name, 1, order.price, order.total_price, order.date_created.date()])
             order_histories.append(orders)
 
-    return render_template('/view_option/view_account/order_history.html', order_histories=order_histories)
+    return render_template('view_option/view_account/order_history.html', order_histories=order_histories)
+
 
 @main.route('/menu_option')
 @login_required

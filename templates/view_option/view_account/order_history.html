@@ -6,9 +6,11 @@
 
 {% block body %}
 
-
 <section class="section has-text-weight-bold has-text-grey">
   {% for order_history in order_histories %}
+    <h4 class="has-text-centered">
+      {{ order_history[0][4] }}
+    </h4>
     {% for order in order_history %}
     <div class="container">
         <div class=" columns is-mobile">
