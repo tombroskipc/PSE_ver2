@@ -22,11 +22,8 @@
 <a class = "box has-text-centered" href="{{ url_for('logout') }}">Logout</a>
 {% else %}
 <div class="column is-4 is-offset-4">
-    <h3 class="title has-text-centered is-size-1 has-text-white">Sign up</h3>
-    <br>
-    <br>
-
-    <div class="box">
+    <div class="box is-mobile">
+        <h2 class="title has-text-centered is-size-1 has-text-black"> Sign up </h2>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
@@ -36,27 +33,51 @@
         {% endwith %}
         <form action="/signup" method="POST">
             <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
+                <label class="label">Username</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                    </span>
                 </div>
+            </div>
+            <div class="field">
+                <label for="" class="label">Email</label>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" name="email" type="email" placeholder="example123@gmail.com" required autofocus>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right"><i class="fas fa-check"></i>
+                    </span>
+                </p>
             </div>
 
             <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
+                <label for="" class="label">Password</label>
+                <p class="control has-icons-left">
+                    <input class="input" type="password" name="password" placeholder="Password" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-key"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <label for="" class="label">Re-Type Password</label>
+                <p class="control has-icons-left">
+                    <input class="input" type="password" name="password" placeholder="Confirm Password" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
             </div>
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
 
             <button class="register-button is-size-5">Sign Up</button>
             <br>
             <a href="{{ url_for('login') }}" class="button is-block is-info is-large is-fullwidth">Login</a>
         </form>
+
     </div>
 </div>
 {% endif %}
