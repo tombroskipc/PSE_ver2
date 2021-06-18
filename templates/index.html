@@ -6,9 +6,6 @@
 {%endblock%}
 
 {% block body%}
-    <br>
-    <br>
-    <br>
     {% if current_user.is_authenticated %}
     <a class = "menu-option" href="{{ url_for('menu_option') }}">Menu</a>
     <a class = "menu-option" href="{{ url_for('view_account') }}">View account</a>
@@ -17,8 +14,16 @@
     <!-- Not login or sign up -->
     {% else %}
 
-    <h2 class = "has-text-centered title has-text-white is-size-1 is-italic"> Sign in to OMeal </h2>
-    <a class = "menu-option" href="{{ url_for('login') }}">Login</a>
+    <section class="hero is-small" >
+        <div class="hero-body bg-dark"  >
+            <p class="has-text-centered is-size-1 text-white"  style="font-family:verdana;">
+                Enjoy your meal!
+            </p>
+        </div>
+    </section>
+    <br>
+
+    <a class = "menu-option " href="{{ url_for('login') }} " >Login</a>
     <a class = "menu-option" href="{{ url_for('signup') }}">Sign up</a>
     {% endif %}
 

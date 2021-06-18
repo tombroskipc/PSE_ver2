@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,32 +26,49 @@
 </head>
 {% if request.url_rule.endpoint != "confirm_order" and request.url_rule.endpoint != "order_status" %}
 <body>
-  <div class = "block">
-    <div class = "navbar nav-color" role="navigation" aria-label="main navigation">
+  <div class = "block " >
+    <div class = "navbar nav-color " role="navigation" aria-label="main navigation" >
         <div class = "navbar-brand">
             <a href = "#" class = "nav-item">
                 <img src="../static/img/app_logo.jpg" alt = "site-logo" style = "max-height: 100px" class = "py-2 px-2">
             </a>
         </div>
 
-    <nav class = "navbar-left navbar-expand-lg navbar-light bg-light">
+
+</div>
+      <nav class = "navbar-right navbar-expand-lg navbar-dark bg-dark">
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbar">
-            <span class = "navbar-toggler-icon"></span>
+            <span class = "navbar-toggler-icon is-primary"></span>
         </button>
         <div class = "collapse navbar-collapse" id = "navbar">
             <div class = "navbar-nav">
                 {% if current_user.id == 1 %}
-                <a class = "nav-item" href = "{{ url_for('manager') }}">Menu</a>
+                <a style="color:orange;" class = "nav-item" href = "{{ url_for('manager') }}"><b>Menu</b></a>
                 {% else %}
-                <a class = "nav-item" href = "{{ url_for('view_menu') }}">Menu</a>
+                <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_menu') }}"><b>Menu</b></a>
                 {% endif %}
-                <a class = "nav-item" href = "{{ url_for('view_account') }}">Account</a>
-                <a class = "nav-item" href = "{{ url_for('contact_us') }}">Contact</a>
+                <ul >
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('order_manager') }}"><b>Your Order</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_account') }}"><b>Account</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('customer_manager') }}"><b>Customer manager</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href = "{{ url_for('contact_us') }}"><b>Contact</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('logout') }}" ><b>Log out</b></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-</div>
     </div>
+
 <script src = "index.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
