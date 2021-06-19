@@ -126,3 +126,7 @@ box{
     box-sizing: border-box;
     font-size: large;
 }
+
+.break-menu{
+    margin-top: 2em;
+}

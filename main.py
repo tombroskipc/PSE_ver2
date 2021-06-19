@@ -132,6 +132,7 @@ def index():
     if current_user.is_authenticated:
         if current_user.id == 1:
             return render_template('manager.html')
+        return redirect('menu_option')
         
     return render_template('index.html')
 
