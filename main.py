@@ -119,6 +119,7 @@ class OrderHistory(db.Model):
     price = db.Column(db.Integer, nullable=False)
     total_price = db.Column(db.Integer)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    payment_method = db.Column(db.String(50), nullable=False)
 
 
 login_manager = LoginManager()
@@ -398,8 +399,8 @@ def order_status():
 @main.route('/order_status', methods=['POST'])
 @login_required
 def order_status_post():
-    select = request.form.get('payment')
-    select = str(select)
+    payment_method = request.form.get('payment')
+    payment_method = str(payment_method)
 
     customer = User.query.filter_by(id=current_user.id).first()
     current_total_price = current_user.total_price
@@ -414,8 +415,8 @@ def order_status_post():
     else:
         current_order_id = int(order_id_all[-1] .order_id) + 1
     for order in orders:
-        db.session.add(OrderHistory(customer_id=current_user.id, order_id=current_order_id,
-                                    name=order.name, price=order.price, total_price=current_total_price))
+        db.session.add(OrderHistory(customer_id=current_user.id, order_id=current_order_id,name=order.name,
+                                    price=order.price, total_price=current_total_price, payment_method=payment_method))
         db.session.delete(order)
 
     db.session.commit()

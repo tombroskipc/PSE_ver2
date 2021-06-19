@@ -9,6 +9,8 @@ h1{
 body, html {
     background-color:var(--primary-color)
 }
+
+
 .most-common-dishes {
     position: relative;
     width: 100%;
