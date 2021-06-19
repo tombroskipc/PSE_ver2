@@ -178,11 +178,16 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')
 
     user = User.query.filter_by(email=email).first()
 
     if user:
         flash('email address already exists.')
+        return redirect(url_for('signup'))
+
+    if password != confirm_password:
+        flash('Password does not match')
         return redirect(url_for('signup'))
 
     new_user = User(email=email, name=name, password=password)
