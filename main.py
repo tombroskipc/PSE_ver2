@@ -254,7 +254,6 @@ def view_account():
 
 
 @main.route("/contact_us")
-@login_required
 def contact_us():
     return render_template('view_option/contact_us.html')
 
@@ -339,11 +338,16 @@ def most_common_dishes_delete(id):
 
 
 @main.route('/manager')
+@login_required
 def manager():
+    if current_user.id != 1:
+        flash('Please login with the manager account')
+        return redirect('menu_option')
     return render_template('manager.html')
 
 
 @main.route('/confirm_order')
+@login_required
 def confirm_order():
     orders_orders = Order.query.filter_by(customer_id=current_user.id).all()
 
@@ -361,6 +365,7 @@ def confirm_order():
 
 
 @main.route('/confirm_order', methods=['POST'])
+@login_required
 def confirm_order_post():
     current_user_status = User.query.filter_by(id=current_user.id).first()
 
@@ -373,6 +378,7 @@ def confirm_order_post():
 
 
 @main.route('/order_status')
+@login_required
 def order_status():
     orders_orders = Order.query.filter_by(customer_id=current_user.id).all()
 
@@ -390,6 +396,7 @@ def order_status():
 
 
 @main.route('/order_status', methods=['POST'])
+@login_required
 def order_status_post():
     select = request.form.get('payment')
     select = str(select)
@@ -416,11 +423,13 @@ def order_status_post():
 
 
 @main.route('/rating')
+@login_required
 def rating():
     return render_template('rating.html')
 
 
 @main.route('/customer_manager')
+@login_required
 def customer_manager():
     customers_pending = User.query.filter_by(prepare_status=1).all()
     customers_preparing = User.query.filter_by(prepare_status=2).all()
@@ -430,7 +439,32 @@ def customer_manager():
                            preparing=customers_preparing, delivering=customers_delivering, delivered=customers_delivered)
 
 
+@main.route('/change_password')
+@login_required
+def change_password():
+    return render_template('view_option/view_account/change_password.html')
+
+
+@main.route('/change_password', methods=['POST'])
+@login_required
+def change_password_post():
+    current_password = request.form['current_password']
+    if current_user.password != current_password:
+        flash('Your current password is not correct, please try again')
+        return redirect('/change_password')
+    new_password = request.form['new_password']
+    confirm_new_password = request.form['confirm_new_password']
+
+    if new_password != confirm_new_password:
+        flash('Confirm password do not match, please try again')
+        return redirect('change_password')
+    current_user.password = current_password
+    flash('Password changed')
+    return redirect('/change_password')
+
+
 @main.route('/order_manager')
+@login_required
 def order_manager():
     orders_orders = OrderHistory.query.order_by(OrderHistory.date_created).all()
     order_histories = []
