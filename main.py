@@ -481,7 +481,7 @@ def order_manager():
                         flag = True
                 if not flag:
                     orders.append([order.name, 1, order.price, order.total_price, order.date_created,
-                                   User.query.filter_by(id=order.customer_id).first().name])
+                                   User.query.filter_by(id=order.customer_id).first().name, order.payment_method])
             order_histories.append(orders)
 
     return render_template('order_manager.html', order_histories=order_histories)
