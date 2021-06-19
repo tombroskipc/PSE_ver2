@@ -18,3 +18,12 @@ const navbarMenu = document.querySelector('#nav-links')
 burgerIcon.addEventListener('click', () =>{
     navbarMenu.classList.toggle('is-active')
 })
+
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}

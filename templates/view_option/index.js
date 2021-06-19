@@ -10,6 +10,14 @@ var shippingRate = 15.00;
 var fadeTime = 300;
 
 
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
 /* Assign actions */
 $('.product-quantity input').change( function() {
   updateQuantity(this);

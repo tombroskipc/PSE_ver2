@@ -2,8 +2,9 @@
 
 {% block head%} 
     <title>Home</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_view_menu.css') }}">
-
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/popup_cart.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/shopping_cart.css') }}">
     <style>
 .scroll_down{
   width: cover;
@@ -86,165 +87,281 @@
             </ul>
         </div>
     </nav>
-</section>>
+</section>
 
 <div class="container scroll_down">
     <div id="Most_Common_Dishes" class="content-tab" >
-        <section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
-        <section class="hero is-danger">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
-        <section class="hero is-black">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
-        <section class="hero is-white">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
- </div>
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Pho</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>5$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Pho.jpg" alt = "Pho" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Curry</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>7$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Curry.jpeg" alt = "Curry" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Beef Steak</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>22$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Steak.jpg" alt = "Steak" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
 
 
-    <div id="New_Dishes" class="content-tab" >
-        <section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Fried Chicken</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>15$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/FriedChicken.png" alt = "FriedChicken" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Sushi</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>3$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Sushi.jpg" alt = "Sushi" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <div id="New_Dishes" class="content-tab" >
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Pizza</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>10$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Pizza.jpg" alt = "Pizza" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Spaghetti</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>7$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Spaghetti.jpg" alt = "Spaghetti" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="Combo" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Combo 1</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>11$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Combo1.jpg" alt = "Combo1" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Combo 2</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>17$</b>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Combo2.png" alt = "Combo2" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
     </div>
 
 
     <div id="Promo" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Grilled Salmon</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium sale_type">
+                            <del>
+                                <span class="amount"><b>$42,00</b></span>
+                            </del>
+                            <ins>
+                                <span class="amount"><b>35$</b></span>
+                            </ins>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Grilled_Salmon.jpg" alt = "Grilled_Salmon" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>Grilled_Lamb</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium sale_type">
+                            <del>
+                                <span class="amount"><b>$35,00</b></span>
+                            </del>
+                            <ins>
+                                <span class="amount"><b>25$</b></span>
+                            </ins>
+                    </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/Grilled_Lamb.jpg" alt = "Grilled_Lamb" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
     </div>
 
 
     <div id="Appetizer" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+
     </div>
 
 
     <div id="Salad" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
 </div>
 
     <div id="Main_Dishes" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+
     </div>
 
 
     <div id="Dessert" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+
     </div>
 
 
     <div id="Drink" class="content-tab" >
-<section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Hero title
-    </p>
-    <p class="subtitle">
-      Hero subtitle
-    </p>
-  </div>
-</section>
+
     </div>
 
 </div>
 
+
+
+
+<button class="open-button" onclick="openForm()">
+    Your Cart</button>
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h2>Your order</h2>
+
+  <div class="container scroll_down">
+  </div>
+
+    <button type="submit" class="btn">Order</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
 
 
 <script
