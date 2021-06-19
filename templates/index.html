@@ -13,18 +13,18 @@
 
     <!-- Not login or sign up -->
     {% else %}
-
-    <section class="hero is-small" >
-        <div class="hero-body bg-dark"  >
-            <p class="has-text-centered is-size-1 text-white"  style="font-family:verdana;">
-                Enjoy your meal!
-            </p>
-        </div>
-    </section>
+    <br>
+    <p class="has-text-centered is-size-2 text-dark"  style="font-family:verdana; ">
+        <b>Enjoy your meal!</b>
+    </p>
     <br>
 
-    <a class = "menu-option " href="{{ url_for('login') }} " >Login</a>
-    <a class = "menu-option" href="{{ url_for('signup') }}">Sign up</a>
+    <a class = " menu-option" href="{{ url_for('login') }} ">
+        Login
+    </a>
+    <a class = " menu-option" href="{{ url_for('signup') }}">
+        Sign up
+    </a>
     {% endif %}
 
 

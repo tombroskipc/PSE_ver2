@@ -1,12 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact us</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact Form - Free Bulma template</title>
+	<link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+	<!-- Bulma Version 0.9.0-->
+	<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/contact.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_nav.css') }}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
 </head>
+
 <body>
-    
+	<!-- START NAV -->
+	<div class = "block " >
+    <div class = "navbar nav-color " role="navigation" aria-label="main navigation" >
+        <div class = "navbar-brand">
+            <a href = "#" class = "nav-item">
+                <img src="../static/img/app_logo.jpg" alt = "site-logo" style = "max-height: 100px" class = "py-2 px-2">
+            </a>
+		</div>
+	</div>
+		</div>
+      <nav class = "navbar-right navbar-expand-lg navbar-dark bg-dark">
+        <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbar">
+            <span class = "navbar-toggler-icon is-primary"></span>
+        </button>
+        <div class = "collapse navbar-collapse" id = "navbar">
+            <div class = "navbar-nav">
+                <ul >
+					<li>
+						<a style="color:orange;" class = "nav-item" href = "{{ url_for('manager') }}"><b>Menu</b></a>
+					</li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" ><b>Your Cart</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('order_manager') }}"><b>Your Order</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_account') }}"><b>Account</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('customer_manager') }}"><b>Customer manager</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href = "{{ url_for('contact_us') }}"><b>Contact</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('logout') }}" ><b>Log out</b></a>
+                    </li>
+                </ul>
+            </div>
+		</div>
+	  </nav>
+
+	<!-- END NAV -->
+	<section class="hero is-fullheight">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="columns is-8 is-variable ">
+					<div class="column is-two-thirds has-text-left" style="background-color:rgb(255, 132, 0);">
+						<h1 class="title is-1">Contact Us</h1>
+						<div class="social-media">
+							<a href="https://facebook.com" target="_blank" class="button is-light is-large"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+							<a href="https://instagram.com" target="_blank" class="button is-light is-large"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+							<a href="https://twitter.com" target="_blank" class="button is-light is-large"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="tel:+84342197751" target="_blank" class="button is-light is-large"><i class="fa fa-phone" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+					<div class="column is-one-third has-text-left">
+						<p class="title is-size-3">How can we help you?</p>
+						<div class="field">
+							<label class="label">Name</label>
+							<div class="control">
+								<input class="input is-medium" type="text">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Email</label>
+							<div class="control">
+								<input class="input is-medium" type="text">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Message</label>
+							<div class="control">
+								<textarea class="textarea is-medium"></textarea>
+							</div>
+						</div>
+						<div class="control">
+							<button type="submit" class="button is-fullwidth has-text-weight-medium is-medium text-dark" style="background-color:rgb(255, 132, 0);">
+								<a><strong>Send Message</strong></a>
+							</button>
+						</div>
+					</div>
+
+			</div>
+		</div>
+	</section>
+<script src = "index.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"
+></script>
 </body>
+
 </html>

@@ -33,9 +33,7 @@
                 <img src="../static/img/app_logo.jpg" alt = "site-logo" style = "max-height: 100px" class = "py-2 px-2">
             </a>
         </div>
-
-
-</div>
+    </div>
       <nav class = "navbar-right navbar-expand-lg navbar-dark bg-dark">
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbar">
             <span class = "navbar-toggler-icon is-primary"></span>
@@ -48,6 +46,9 @@
                 <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_menu') }}"><b>Menu</b></a>
                 {% endif %}
                 <ul >
+                    <li>
+                        <a style="color:orange;" href="{{ url_for('shopping_cart') }}"><b>Your Cart</b></a>
+                    </li>
                     <li>
                         <a style="color:orange;" class = "nav-item" href="{{ url_for('order_manager') }}"><b>Your Order</b></a>
                     </li>
@@ -67,7 +68,7 @@
             </div>
         </div>
     </nav>
-    </div>
+  </div>
 
 <script src = "index.js"></script>
 <script
