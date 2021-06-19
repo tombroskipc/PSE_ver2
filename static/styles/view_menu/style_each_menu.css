@@ -10,7 +10,9 @@ body, html {
     background-color:var(--primary-color)
 }
 
-
+.food-img{
+    margin-top: -1.5em;
+}
 .most-common-dishes {
     position: relative;
     width: 100%;
