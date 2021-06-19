@@ -4,92 +4,267 @@
     <title>Home</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_view_menu.css') }}">
 
+    <style>
+.scroll_down{
+  width: cover;
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.scroll_down::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll_down {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
+
 {%endblock%}
+
 {% block body%}
 
-
-<div class = "box bg-dark" >
-    <div class="tabs is-small is-centered is-box ">
-  <ul>
-    <li>
-        <a href="{{ url_for('most_common_dishes_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Most Common Dishes</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('new_dishes_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>New Dishes</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('combo_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Combo</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('appetizers_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Appetizers</b>
-        </a>
-    </li>
-  </ul>
-</div>
-</div>
-
-<div class = "box bg-dark" >
-    <div class="tabs is-small is-centered is-box">
-  <ul>
-    <li>
-        <a href="{{ url_for('soup_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Soup</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('salad_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Salad</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('main_dishes_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Main dishes</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('dessert_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Dessert</b>
-        </a>
-    </li>
-    <li>
-        <a href="{{ url_for('drinks_manager') }}" style="color:rgb(255, 200, 0);">
-            <b>Drinks</b>
-        </a>
-    </li>
-  </ul>
-</div>
-</div>
-
-<section class="section">
-    <div class="container">
-
-        <div class=" columns has-text-centered is-mobile">
-            <div class="column is-2"></div>
-            <div class="column is-8">
-                <a class = "box has-text-weight-bold" style="background-color:rgb(255, 132, 0);" href="{{ url_for('customer_manager') }}">
-                    <b><strong>Customer manager</strong></b>
-                </a>
-            </div>
-            <div class="column is-2"></div>
+<section class = "container bg-dark" >
+    <nav class="tabs is-boxed is-small is-centered is-box ">
+        <div class = "container">
+            <ul>
+                <li class = "tab is-active" onclick="openTab(event,'Most_Common_Dishes')">
+                    <a  style="color:rgb(255, 200, 0);">
+                        <b>Most Common Dishes</b>
+                    </a>
+                </li>
+                <li class="tab" onclick="openTab(event,'New_Dishes')">
+                    <a  style="color:rgb(255, 200, 0);">
+                        <b>New Dishes</b>
+                    </a>
+                </li>
+                <li class="tab" onclick="openTab(event,'Combo')">
+                    <a  style="color:rgb(255, 200, 0);">
+                        <b>Combo</b>
+                    </a>
+                </li>
+                <li class="tab" onclick="openTab(event,'Promo')">
+                    <a style="color:rgb(255, 200, 0);">
+                        <b>Promotion</b>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <div class=" columns has-text-centered is-mobile">
-            <div class="column is-2"></div>
-            <div class="column is-8">
-                <a class = "box has-text-weight-bold" style="background-color:rgb(255, 132, 0);" href="{{ url_for('order_manager') }}">
-                    <b><strong>Order manager</strong></b>
-                </a>
-            </div>
-            <div class="column is-2"></div>
-        </div>
-
-    </div>
+    </nav>
 </section>
+
+<section class = "container bg-dark" >
+    <nav class="tabs is-boxed is-small is-centered is-box ">
+        <div class = "container">
+            <ul>
+                <li class = "tab" onclick="openTab(event,'Appetizer')">
+                    <a  style="color:rgb(255, 200, 0);">
+                        <b>Appetizer</b>
+                    </a>
+                </li>
+                <li class = "tab" onclick="openTab(event,'Salad')">
+                    <a style="color:rgb(255, 200, 0);">
+                        <b>Salad</b>
+                    </a>
+                </li>
+                <li class = "tab" onclick="openTab(event,'Main_Dishes')">
+                    <a style="color:rgb(255, 200, 0);">
+                        <b>Main Dishes</b>
+                    </a>
+                </li>
+                <li class = "tab" onclick="openTab(event,'Dessert')">
+                    <a style="color:rgb(255, 200, 0);">
+                        <b>Dessert</b>
+                    </a>
+                </li>
+                <li class = "tab" onclick="openTab(event,'Drink')">
+                    <a style="color:rgb(255, 200, 0);">
+                        <b>Drink</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>>
+
+<div class="container scroll_down">
+    <div id="Most_Common_Dishes" class="content-tab" >
+        <section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+        <section class="hero is-danger">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+        <section class="hero is-black">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+        <section class="hero is-white">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+ </div>
+
+
+    <div id="New_Dishes" class="content-tab" >
+        <section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+
+    <div id="Combo" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+
+    <div id="Promo" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+
+    <div id="Appetizer" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+
+    <div id="Salad" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+</div>
+
+    <div id="Main_Dishes" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+
+    <div id="Dessert" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+
+    <div id="Drink" class="content-tab" >
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Hero title
+    </p>
+    <p class="subtitle">
+      Hero subtitle
+    </p>
+  </div>
+</section>
+    </div>
+
+</div>
+
+
+
+<script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+<script
+      type="text/javascript"
+      src="{{ url_for('static', filename='method.js') }}"
+></script>
+
 {%endblock%}
