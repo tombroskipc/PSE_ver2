@@ -242,6 +242,11 @@ def order_history():
 def menu_option():
     return render_template('menu_option.html')
 
+@main.route('/shopping_cart')
+@login_required
+def shopping_cart():
+    return render_template('cart.html')
+
 
 @main.route("/view_menu")
 @login_required

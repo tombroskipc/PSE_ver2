@@ -9,13 +9,22 @@
 {% block body%}
 <br>
     <ul class="choosing-option">
-        <li><a class = "menu-option" href="{{ url_for('profile') }}">View profile</a></li>
-        <li><a class = "menu-option" href="{{ url_for('change_password') }}">Change password</a></li>
-        <li><a class = "menu-option" href="#">Add new payment</a></li>
-        <li><a class = "menu-option" href="{{ url_for('order_history') }}">Order history</a></li>
-        <li><a class = "menu-option" href="{{ url_for('logout') }}">Logout</a></li>
+        <li><a class = "menu-option text-dark" href="{{ url_for('profile') }}" >
+            <b><strong>View profile</strong></b>
+        </a></li>
+        <li><a class = "menu-option text-dark" href="#">
+            <b><strong>Change password</strong></b>
+        </a></li>
+        <li><a class = "menu-option text-dark" href="#" >
+            <b><strong>Add new payment</strong></b>
+        </a></li>
+        <li><a class = "menu-option text-dark" href="{{ url_for('order_history') }}" >
+            <b><strong>Order history</strong></b>
+        </a></li>
+        <li><a class = "menu-option text-dark" href="{{ url_for('logout') }}" >
+            <b><strong>Logout</strong></b>
+        </a></li>
     </ul>
-
 
 {%endblock%}
 

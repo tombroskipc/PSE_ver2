@@ -29,14 +29,12 @@
   <div class = "block " >
     <div class = "navbar nav-color " role="navigation" aria-label="main navigation" >
         <div class = "navbar-brand">
-            <a href = "{{ url_for('menu_option') }}" class = "nav-item">
+            <a href = "#" class = "nav-item">
                 <img src="../static/img/app_logo.jpg" alt = "site-logo" style = "max-height: 100px" class = "py-2 px-2">
             </a>
         </div>
-
-
-</div>
-      <nav class = "navbar-right navbar-expand-lg navbar-dark bg-dark nav-margin">
+    </div>
+      <nav class = "navbar-right navbar-expand-lg navbar-dark bg-dark">
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbar">
             <span class = "navbar-toggler-icon is-primary"></span>
         </button>
@@ -49,16 +47,17 @@
                 {% endif %}
                 <ul >
                     <li>
-                        <a style="color:orange;" class = "nav-item" href="{{ url_for('order_history') }}"><b>Your Order</b></a>
+                        <a style="color:orange;" href="{{ url_for('shopping_cart') }}"><b>Your Cart</b></a>
+                    </li>
+                    <li>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('order_manager') }}"><b>Your Order</b></a>
                     </li>
                     <li>
                         <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_account') }}"><b>Account</b></a>
                     </li>
-                    {% if current_user.id == 1 %}
                     <li>
                         <a style="color:orange;" class = "nav-item" href="{{ url_for('customer_manager') }}"><b>Customer manager</b></a>
                     </li>
-                    {% endif %}
                     <li>
                         <a style="color:orange;" class = "nav-item" href = "{{ url_for('contact_us') }}"><b>Contact</b></a>
                     </li>
@@ -69,7 +68,7 @@
             </div>
         </div>
     </nav>
-    </div>
+  </div>
 
 <script src = "index.js"></script>
 <script

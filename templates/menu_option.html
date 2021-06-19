@@ -9,7 +9,6 @@
 <br>
 <br>
 <br>
-
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div class="notification is-danger">
@@ -17,8 +16,8 @@
     </div>
 {% endif %}
 {% endwith %}
-
-        <a class = "menu-option break-menu" href="{{ url_for('view_menu') }}">View menu</a>
+<body>
+    <a class = "menu-option" href="{{ url_for('view_menu') }}">View menu</a>
         <a class = "menu-option" href="{{ url_for('view_account') }}">View account</a>
         <a class = "menu-option" href="{{ url_for('contact_us') }}">Contact us</a>
 
