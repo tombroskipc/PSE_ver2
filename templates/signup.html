@@ -27,15 +27,15 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
-                {{ messages[0] }} Go to <a href="{{ url_for('login') }}">login page</a>.
+                {{ messages[0] }}
             </div>
         {% endif %}
         {% endwith %}
         <form action="/signup" method="POST">
             <div class="field">
-                <label class="label">Username</label>
+                <label class="label">Your name</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text">
+                    <input class="input" name="name" type="text" placeholder="Enter your username">
                     <span class="icon is-small is-left">
                         <i class="fa fa-user"></i>
                     </span>
@@ -65,7 +65,7 @@
             <div class="field">
                 <label for="" class="label">Re-Type Password</label>
                 <p class="control has-icons-left">
-                    <input class="input" type="password" name="password" placeholder="Confirm Password" required>
+                    <input class="input" type="password" name="confirm_password" placeholder="Confirm Password" required>
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>

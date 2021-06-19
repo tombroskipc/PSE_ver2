@@ -18,20 +18,33 @@
         <div class=" columns is-mobile">
             <div class="column is-1">{{ order[1] }}x</div>
             <div class="column is-8">{{ order[0] }}</div>
-            <div class="column is-3">${{ order[2] }}</div>
+            <div class="column is-3 has-text-black">${{ order[2] }}</div>
         </div>
     </div>
     {% endfor %}
     <div class="container mt-2">
       <div class=" columns is-mobile">
-          <div class="column is-1">Total price: </div>
-          <div class="column is-8"></div>
+          <div class="column is-6 has-text-link">Total price: </div>
+          <div class="column is-3"></div>
           <div class="column is-3 has-text-primary">${{ order_history[0][3] }}</div>
       </div>
   </div>
-  <h4 class="has-text-centered is-size-5">
-    {{ order_history[0][4] }}
-  </h4>
+
+  <div class="container mt-2">
+    <div class=" columns is-mobile">
+        <div class="column is-1 has-text-link">Time: </div>
+        <div class="column is-1"></div>
+        <div class="column is-10 has-text-black ">{{ order_history[0][4] }}</div>
+    </div>
+</div>
+
+<div class="container mt-2">
+  <div class=" columns is-mobile">
+      <div class="column is-6 has-text-link">Payment method: </div>
+      <div class="column is-3"></div>
+      <div class="column is-3 has-text-black">{{ order_history[0][6] }}</div>
+  </div>
+</div>
     <br>
     <br>
     <br>
