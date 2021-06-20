@@ -116,23 +116,5 @@
       {% endif %}
 
 
-      {% if current_user.is_authenticated %}
-      {% if  current_user.id != 1 %}
-      <footer class="footer">
-        <div class="content has-text-centered">
-          <a href="{{ url_for('view_menu') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
-            Back to menu
-          </a>
-          <a href="{{ url_for('menu_option') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
-            Home
-          </a>
-          <a href="{{ url_for('logout') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
-            Log out
-          </a>
-        </div>
-      </footer>
-      {% endif %}
-      {% else %}
-      {% endif %}
 </body>
 </html>
