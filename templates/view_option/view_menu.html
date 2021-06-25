@@ -6,7 +6,13 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/popup_cart.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/shopping_cart.css') }}">
-    <style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+   <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='method.js') }}"
+></script> <style>
 .scroll_down{
   width: cover;
   height: 350px;
@@ -104,6 +110,7 @@
                     <a class = "is-medium">
                         <b>5$</b>
                     </a>
+                    <a href="#" data-name="Pho" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Pho.jpg" alt = "Pho" style = "max-height: 120px" class = "py-1 px-1">
@@ -123,6 +130,7 @@
                     <a class = "is-medium">
                         <b>7$</b>
                     </a>
+                    <a href="#" data-name="Curry" data-price="7" class="add-to-cart btn btn-primary ">Add</a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Curry.jpeg" alt = "Curry" style = "max-height: 120px" class = "py-1 px-1">
@@ -142,6 +150,7 @@
                     <a class = "is-medium">
                         <b>22$</b>
                     </a>
+                    <a href="#" data-name="Beef Steak" data-price="22" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Steak.jpg" alt = "Steak" style = "max-height: 120px" class = "py-1 px-1">
@@ -162,6 +171,7 @@
                     <a class = "is-medium">
                         <b>15$</b>
                     </a>
+                    <a href="#" data-name="Fried Chicken" data-price="15" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/FriedChicken.png" alt = "FriedChicken" style = "max-height: 120px" class = "py-1 px-1">
@@ -181,6 +191,7 @@
                     <a class = "is-medium">
                         <b>3$</b>
                     </a>
+                    <a href="#" data-name="Sushi" data-price="3" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Sushi.jpg" alt = "Sushi" style = "max-height: 120px" class = "py-1 px-1">
@@ -203,6 +214,7 @@
                     <a class = "is-medium">
                         <b>10$</b>
                     </a>
+                    <a href="#" data-name="Pizza" data-price="10" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Pizza.jpg" alt = "Pizza" style = "max-height: 120px" class = "py-1 px-1">
@@ -222,6 +234,7 @@
                     <a class = "is-medium">
                         <b>7$</b>
                     </a>
+                     <a href="#" data-name="Spaghetti" data-price="7" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Spaghetti.jpg" alt = "Spaghetti" style = "max-height: 120px" class = "py-1 px-1">
@@ -243,6 +256,7 @@
                     <a class = "is-medium">
                         <b>11$</b>
                     </a>
+                    <a href="#" data-name="Combo 1" data-price="11" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Combo1.jpg" alt = "Combo1" style = "max-height: 120px" class = "py-1 px-1">
@@ -262,6 +276,7 @@
                     <a class = "is-medium">
                         <b>17$</b>
                     </a>
+                    <a href="#" data-name="Combo 2" data-price="17" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Combo2.png" alt = "Combo2" style = "max-height: 120px" class = "py-1 px-1">
@@ -289,6 +304,7 @@
                                 <span class="amount"><b>35$</b></span>
                             </ins>
                     </a>
+                    <a href="#" data-name="Grilled Salmon" data-price="35" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Grilled_Salmon.jpg" alt = "Grilled_Salmon" style = "max-height: 120px" class = "py-1 px-1">
@@ -300,7 +316,7 @@
             <div class = "columns is-vcentered is-mobile">
                 <div class = "column is-6-mobile">
                     <h2 class = "is-size-3-mobile">
-                        <b>Grilled_Lamb</b>
+                        <b>Grilled Lamb</b>
                     </h2>
                     <span class = "tag is-medium" style = "background-color:orange">
                         Price
@@ -313,19 +329,20 @@
                                 <span class="amount"><b>25$</b></span>
                             </ins>
                     </a>
+                    <a href="#" data-name="Grilled Lamb" data-price="25" class="add-to-cart btn btn-primary ">Add</a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
                     <img src="../static/img/Grilled_Lamb.jpg" alt = "Grilled_Lamb" style = "max-height: 120px" class = "py-1 px-1">
                 </div>
             </div>
-        </div>
+
+     </div>
     </div>
 
 
     <div id="Appetizer" class="content-tab" >
 
     </div>
-
 
     <div id="Salad" class="content-tab" >
 </div>
@@ -348,21 +365,43 @@
 
 
 
+<nav class="navbar navbar-inverse bg-inverse fixed-bottom bg-faded">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart" style = "background-color: rgb(255, 132, 0);">Cart
+              (<span class="total-count"></span>)
+          </button>
+</nav>
 
-<button class="open-button" onclick="openForm()">
-    Your Cart</button>
 
-<div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h2>Your order</h2>
 
-  <div class="container scroll_down">
+
+
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="show-cart table">
+
+        </table>
+        <div>Total price: $<span class="total-cart"></span></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="clear-cart btn btn-danger" >Clear Cart</button>
+        <button type="button" class="btn btn-primary">Order now</button>
+      </div>
+    </div>
   </div>
-
-    <button type="submit" class="btn">Order</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
 </div>
+
+
+
+
 
 
 <script
@@ -380,9 +419,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-<script
-      type="text/javascript"
-      src="{{ url_for('static', filename='method.js') }}"
-></script>
+
 
 {%endblock%}
