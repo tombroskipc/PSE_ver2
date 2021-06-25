@@ -43,7 +43,7 @@
                 {% if current_user.id == 1 %}
                     <li>
                         <a style="color:orange;" class = "nav-item" href = "{{ url_for('manager') }}"><b>Menu Manager</b></a>
-                    </li>aria-expanded="false" aria-label="Toggle navigation">
+                    </li>
                 {% else %}
                     <li>
                         <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_menu') }}"><b>Menu</b></a>

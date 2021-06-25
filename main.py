@@ -260,7 +260,18 @@ def view_menu():
     dessert = Dessert.query.order_by(Dessert.id).all()
     drinks = Drinks.query.order_by(Drinks.id).all()
     main_dishes = MainDishes.query.order_by(MainDishes.id).all()
-    return render_template('view_option/view_menu.html', most_common_dishes=most_common_dishes, combo=combo,
+    orders_orders = Order.query.filter_by(customer_id=current_user.id).all()
+
+    orders = []
+    for order in orders_orders:
+        flag = False
+        for index_i in range(len(orders)):
+            if orders[index_i][0] == order.name:
+                orders[index_i][1] += 1
+                flag = True
+        if not flag:
+            orders.append([order.name, 1, order.price])
+    return render_template('view_option/view_menu.html', most_common_dishes=most_common_dishes, combo=combo, orders=orders,
     new_dishes=new_dishes, soup=soup, salad=salad, dessert=dessert, drinks=drinks, main_dishes=main_dishes, appetizers=appetizers)
 
 
