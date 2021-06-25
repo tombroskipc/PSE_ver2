@@ -210,8 +210,6 @@ def logout():
 @main.route('/profile')
 @login_required
 def profile():
-    name = str(current_user.name)
-    user = current_user
     return render_template('profile.html', name=current_user.name)
 
 
@@ -550,6 +548,8 @@ def customer_manager_delete_order(id):
         db.session.delete(order)
 
     db.session.commit()
+    if (current_user.id != 1):
+        return redirect(url_for('view_menu'))
     return redirect(url_for('customer_manager'))
 
 

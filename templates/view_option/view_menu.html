@@ -330,7 +330,7 @@
 
 <nav class="navbar navbar-inverse bg-inverse fixed-bottom bg-faded">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart" style = "background-color: rgb(255, 132, 0);">Cart
-              (<span class="total-count"></span>)
+              (<span class="total-count">{{current_user.number_of_order}}</span>)
           </button>
 </nav>
 
@@ -385,7 +385,7 @@
         </table>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button class="clear-cart btn btn-danger" >Clear Cart</button>
+        <a href="/customer_manager_delete_order/{{current_user.id}}">  <button class="clear-cart btn btn-danger" >Clear Cart</button> </a>
         <button type="button" class="btn btn-primary"><a class="btn btn-primary" href="{{ url_for('confirm_order') }}">Order now</a></button>
       </div>
     </div>
