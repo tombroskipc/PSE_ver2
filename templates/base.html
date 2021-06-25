@@ -43,7 +43,7 @@
                 {% if current_user.id == 1 %}
                     <li>
                         <a style="color:orange;" class = "nav-item" href = "{{ url_for('manager') }}"><b>Menu Manager</b></a>
-                    </li>aria-expanded="false" aria-label="Toggle navigation">
+                    </li>
                 {% else %}
                     <li>
                         <a style="color:orange;" class = "nav-item" href = "{{ url_for('view_menu') }}"><b>Menu</b></a>
@@ -108,14 +108,7 @@
         Check your order status
       </a>
       {% else %}
-      <a href="{{ url_for('confirm_order') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
-        Confirm {{current_user.number_of_order}} 
-        {% if current_user.number_of_order <=1 %}
-        order
-        {% else %}
-        orders
-        {% endif %}
-      </a>
+      
       {% endif %}
       {% endif %}
 

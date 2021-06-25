@@ -86,9 +86,9 @@
                         <b>Dessert</b>
                     </a>
                 </li>
-                <li class = "tab" onclick="openTab(event,'Drink')">
+                <li class = "tab" onclick="openTab(event,'Drinks')">
                     <a style="color:rgb(255, 200, 0);">
-                        <b>Drink</b>
+                        <b>Drinks</b>
                     </a>
                 </li>
             </ul>
@@ -98,268 +98,231 @@
 
 <div class="container scroll_down">
     <div id="Most_Common_Dishes" class="content-tab" >
+        {% for most_common_dish in most_common_dishes %}
         <div class = "container" style="color:black; background-color: white" >
             <div class = "columns is-vcentered is-mobile">
                 <div class = "column is-6-mobile">
                     <h2 class = "is-size-3-mobile">
-                        <b>Pho</b>
+                        <b>{{ most_common_dish.name }}</b>
                     </h2>
                     <span class = "tag is-medium" style = "background-color:orange">
                         Price
                     </span>
                     <a class = "is-medium">
-                        <b>5$</b>
+                        <b>{{most_common_dish.price}}$</b>
                     </a>
-                    <a href="#" data-name="Pho" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                    <a href="most_common_dishes/{{most_common_dish.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Pho.jpg" alt = "Pho" style = "max-height: 120px" class = "py-1 px-1">
+                    <img src="../static/img/{{most_common_dish.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
                 </div>
             </div>
         </div>
-
-        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Curry</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium">
-                        <b>7$</b>
-                    </a>
-                    <a href="#" data-name="Curry" data-price="7" class="add-to-cart btn btn-primary ">Add</a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Curry.jpeg" alt = "Curry" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
-
-        <div class = "container" style="color:black; background-color: white" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Beef Steak</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium">
-                        <b>22$</b>
-                    </a>
-                    <a href="#" data-name="Beef Steak" data-price="22" class="add-to-cart btn btn-primary ">Add </a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Steak.jpg" alt = "Steak" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
-
-
-        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Fried Chicken</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium">
-                        <b>15$</b>
-                    </a>
-                    <a href="#" data-name="Fried Chicken" data-price="15" class="add-to-cart btn btn-primary ">Add </a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/FriedChicken.png" alt = "FriedChicken" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
-
-        <div class = "container" style="color:black; background-color: white" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Sushi</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium">
-                        <b>3$</b>
-                    </a>
-                    <a href="#" data-name="Sushi" data-price="3" class="add-to-cart btn btn-primary ">Add </a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Sushi.jpg" alt = "Sushi" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 
     <div id="New_Dishes" class="content-tab" >
+        {% for new_dish in new_dishes %}
         <div class = "container" style="color:black; background-color: white" >
             <div class = "columns is-vcentered is-mobile">
                 <div class = "column is-6-mobile">
                     <h2 class = "is-size-3-mobile">
-                        <b>Pizza</b>
+                        <b>{{ new_dish.name }}</b>
                     </h2>
                     <span class = "tag is-medium" style = "background-color:orange">
                         Price
                     </span>
                     <a class = "is-medium">
-                        <b>10$</b>
+                        <b>{{new_dish.price}}$</b>
                     </a>
-                    <a href="#" data-name="Pizza" data-price="10" class="add-to-cart btn btn-primary ">Add </a>
+                    <a href="new_dishes/{{new_dish.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Pizza.jpg" alt = "Pizza" style = "max-height: 120px" class = "py-1 px-1">
+                    <img src="../static/img/{{new_dish.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
                 </div>
             </div>
         </div>
-
-        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Spaghetti</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium">
-                        <b>7$</b>
-                    </a>
-                     <a href="#" data-name="Spaghetti" data-price="7" class="add-to-cart btn btn-primary ">Add </a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Spaghetti.jpg" alt = "Spaghetti" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
+
+
 
     <div id="Combo" class="content-tab" >
+        {% for comboes in combo %}
         <div class = "container" style="color:black; background-color: white" >
             <div class = "columns is-vcentered is-mobile">
                 <div class = "column is-6-mobile">
                     <h2 class = "is-size-3-mobile">
-                        <b>Combo 1</b>
+                        <b>{{ comboes.name }}</b>
                     </h2>
                     <span class = "tag is-medium" style = "background-color:orange">
                         Price
                     </span>
                     <a class = "is-medium">
-                        <b>11$</b>
+                        <b>{{comboes.price}}$</b>
                     </a>
-                    <a href="#" data-name="Combo 1" data-price="11" class="add-to-cart btn btn-primary ">Add </a>
+                    <a href="combo/{{comboes.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
                 </div>
                 <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Combo1.jpg" alt = "Combo1" style = "max-height: 120px" class = "py-1 px-1">
+                    <img src="../static/img/{{comboes.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
                 </div>
             </div>
         </div>
-
-        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Combo 2</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium">
-                        <b>17$</b>
-                    </a>
-                    <a href="#" data-name="Combo 2" data-price="17" class="add-to-cart btn btn-primary ">Add </a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Combo2.png" alt = "Combo2" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="Promo" class="content-tab" >
-        <div class = "container" style="color:black; background-color: white" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Grilled Salmon</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium sale_type">
-                            <del>
-                                <span class="amount"><b>$42,00</b></span>
-                            </del>
-                            <ins>
-                                <span class="amount"><b>35$</b></span>
-                            </ins>
-                    </a>
-                    <a href="#" data-name="Grilled Salmon" data-price="35" class="add-to-cart btn btn-primary ">Add </a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Grilled_Salmon.jpg" alt = "Grilled_Salmon" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-        </div>
-
-        <div class = "container" style="color:black; background-color: rgb(255,255,230)" >
-            <div class = "columns is-vcentered is-mobile">
-                <div class = "column is-6-mobile">
-                    <h2 class = "is-size-3-mobile">
-                        <b>Grilled Lamb</b>
-                    </h2>
-                    <span class = "tag is-medium" style = "background-color:orange">
-                        Price
-                    </span>
-                    <a class = "is-medium sale_type">
-                            <del>
-                                <span class="amount"><b>$35,00</b></span>
-                            </del>
-                            <ins>
-                                <span class="amount"><b>25$</b></span>
-                            </ins>
-                    </a>
-                    <a href="#" data-name="Grilled Lamb" data-price="25" class="add-to-cart btn btn-primary ">Add</a>
-                </div>
-                <div class = "column is-6-mobile has-text-right">
-                    <img src="../static/img/Grilled_Lamb.jpg" alt = "Grilled_Lamb" style = "max-height: 120px" class = "py-1 px-1">
-                </div>
-            </div>
-
-     </div>
+        {% endfor %}
     </div>
 
 
     <div id="Appetizer" class="content-tab" >
-
+        {% for appetizer in appetizers %}
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>{{ appetizer.name }}</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>{{appetizer.price}}$</b>
+                    </a>
+                    <a href="appetizers/{{appetizer.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/{{appetizer.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
+
+    <div id="Soup" class="content-tab" >
+        {% for soups in soup %}
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>{{ soups.name }}</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>{{soups.price}}$</b>
+                    </a>
+                    <a href="soup/{{soups.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/{{soups.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
     <div id="Salad" class="content-tab" >
-</div>
-
-    <div id="Main_Dishes" class="content-tab" >
-
+        {% for salads in salad %}
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>{{ salads.name }}</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>{{salads.price}}$</b>
+                    </a>
+                    <a href="salad/{{salads.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/{{salads.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
 
     <div id="Dessert" class="content-tab" >
-
+        {% for desserts in dessert %}
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>{{ desserts.name }}</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>{{desserts.price}}$</b>
+                    </a>
+                    <a href="dessert/{{desserts.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/{{desserts.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
 
-    <div id="Drink" class="content-tab" >
-
+    <div id="Drinks" class="content-tab" >
+        {% for drink in drinks %}
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>{{ drink.name }}</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>{{drink.price}}$</b>
+                    </a>
+                    <a href="drinks/{{drink.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../static/img/{drink.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
+
+
+    <div id="Main_Dishes" class="content-tab" >
+        {% for main_dish in main_dishes %}
+        <div class = "container" style="color:black; background-color: white" >
+            <div class = "columns is-vcentered is-mobile">
+                <div class = "column is-6-mobile">
+                    <h2 class = "is-size-3-mobile">
+                        <b>{{ main_dish.name }}</b>
+                    </h2>
+                    <span class = "tag is-medium" style = "background-color:orange">
+                        Price
+                    </span>
+                    <a class = "is-medium">
+                        <b>{{main_dish.price}}$</b>
+                    </a>
+                    <a href="main_dishes/{{main_dish.id}}" data-name="Food img" data-price="5" class="add-to-cart btn btn-primary ">Add </a>
+                </div>
+                <div class = "column is-6-mobile has-text-right">
+                    <img src="../../static/img/{{main_dish.name}}.jpg" alt = "Food img" style = "max-height: 120px" class = "py-1 px-1">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
 
 </div>
 
@@ -386,14 +349,44 @@
       </div>
       <div class="modal-body">
         <table class="show-cart table">
-
+            <h2 class="has-text-weight-bold has-text-black is-size-3 py-2">
+                Your order
+            </h2>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification is-danger">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+            {% endwith %}
+            
+            <section class="section has-text-weight-bold has-text-grey">
+                {% for order in orders %}
+                <div class="container">
+                    <div class=" columns is-mobile">
+                        <div class="column is-1">{{ order[1] }}x</div>
+                        <div class="column is-8">{{ order[0] }}</div>
+                        <div class="column is-3">${{ order[2] }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+            
+                <section class="section">
+                    <div class="container">
+                        <div class=" columns is-mobile">
+                            <div class="column is-4 confirm-text">
+                                <p class="has-text-grey has-text-weight-bold">Total Price ${{current_user.total_price}}</p>
+                            <div class="column is-2"></div>
+                            <div class="column is-8">
+                            </div>
+                        </div>
+                </section>
         </table>
-        <div>Total price: $<span class="total-cart"></span></div>
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button class="clear-cart btn btn-danger" >Clear Cart</button>
-        <button type="button" class="btn btn-primary">Order now</button>
+        <button type="button" class="btn btn-primary"><a class="btn btn-primary" href="{{ url_for('confirm_order') }}">Order now</a></button>
       </div>
     </div>
   </div>
