@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block head%} 
 
-    <title>Restaurant POS</title>
+    <title>OMeal</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style_pre_login.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/shopping_cart.css') }}">
 {%endblock%}
 
 {% block body%}
@@ -17,9 +18,9 @@
 {% endif %}
 {% endwith %}
 <body>
-    <a class = "menu-option" href="{{ url_for('view_menu') }}">View menu</a>
-        <a class = "menu-option" href="{{ url_for('view_account') }}">View account</a>
-        <a class = "menu-option" href="{{ url_for('contact_us') }}">Contact us</a>
+    <a class = "menu-option text-dark" href="{{ url_for('view_menu') }}">View menu</a>
+        <a class = "menu-option text-dark" href="{{ url_for('view_account') }}">View account</a>
+        <a class = "menu-option text-dark" href="{{ url_for('contact_us') }}">Contact us</a>
 
 <br>
 <br>

@@ -8,13 +8,22 @@
 <br>
 {% if current_user.is_authenticated %}
 <br>
-<br>
-<br>
-<div class="has-text-centered is-size-3 has-text-weight-bold has-text-white">
-        PLEASE LOGOUT BEFORE LOG INTO ANOTHER ACCOUNT
+
+<p class="has-text-centered is-size-4 text-dark"  style="font-family:verdana; ">
+        <b> PLEASE LOGOUT BEFORE LOG INTO ANOTHER ACCOUNT</b>
+    </p>
+
+<BR>
+<div>
+    <a  href="{{ url_for('view_menu') }}" class = "button is-block  is-large is-fullwidth text-dark" style = " background-color: rgb(255,132,0); " ><b>Menu</b></a>
 </div>
-<a class = "box has-text-centered" href="{{ url_for('menu_option') }}">Menu</a>
-<a class = "box has-text-centered" href="{{ url_for('logout') }}">Logout</a>
+
+<br>
+
+<div >
+    <a  href="{{ url_for('logout') }}"class = "button is-block is-large is-fullwidth text-dark" style = " background-color: rgb(255,132,0); " ><b>Logout</b></a>
+</div>
+
 
 {% else %}
 <div class="column is-4 is-offset-4 ">
