@@ -251,7 +251,17 @@ def shopping_cart():
 @main.route("/view_menu")
 @login_required
 def view_menu():
-    return render_template('view_option/view_menu.html')
+    most_common_dishes = MostCommonDishes.query.order_by(MostCommonDishes.id).all()
+    appetizers = Appetizers.query.order_by(Appetizers.id).all()
+    new_dishes = NewDishes.query.order_by(NewDishes.id).all()
+    combo = Combo.query.order_by(Combo.id).all()
+    soup = Soup.query.order_by(Soup.id).all()
+    salad = Salad.query.order_by(Salad.id).all()
+    dessert = Dessert.query.order_by(Dessert.id).all()
+    drinks = Drinks.query.order_by(Drinks.id).all()
+    main_dishes = MainDishes.query.order_by(MainDishes.id).all()
+    return render_template('view_option/view_menu.html', most_common_dishes=most_common_dishes, combo=combo,
+    new_dishes=new_dishes, soup=soup, salad=salad, dessert=dessert, drinks=drinks, main_dishes=main_dishes, appetizers=appetizers)
 
 
 @main.route("/view_account")
@@ -292,7 +302,7 @@ def most_common_dishes_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/most_common_dishes')
+    return redirect('/view_menu')
 
 
 @main.route('/most_common_dishes_manager', methods=['POST', 'GET'])
@@ -558,7 +568,7 @@ def new_dishes_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/new_dishes')
+    return redirect('/view_menu')
 
 
 @main.route('/new_dishes_manager', methods=['POST', 'GET'])
@@ -636,7 +646,7 @@ def combo_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/combo')
+    return redirect('/view_menu')
 
 
 @main.route('/combo_manager', methods=['POST', 'GET'])
@@ -714,7 +724,7 @@ def appetizers_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/appetizers')
+    return redirect('/view_menu')
 
 
 @main.route('/appetizers_manager', methods=['POST', 'GET'])
@@ -792,7 +802,7 @@ def soup_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/soup')
+    return redirect('/view_menu')
 
 
 @main.route('/soup_manager', methods=['POST', 'GET'])
@@ -870,7 +880,7 @@ def salad_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/salad')
+    return redirect('/view_menu')
 
 
 @main.route('/salad_manager', methods=['POST', 'GET'])
@@ -948,7 +958,7 @@ def dessert_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/dessert')
+    return redirect('/view_menu')
 
 
 @main.route('/dessert_manager', methods=['POST', 'GET'])
@@ -1026,7 +1036,7 @@ def drinks_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/drinks')
+    return redirect('/view_menu')
 
 
 @main.route('/drinks_manager', methods=['POST', 'GET'])
@@ -1104,7 +1114,7 @@ def main_dishes_post(id):
     except:
         return 'There was an issue adding your dish'
 
-    return redirect('/main_dishes')
+    return redirect('/view_menu')
 
 
 @main.route('/main_dishes_manager', methods=['POST', 'GET'])

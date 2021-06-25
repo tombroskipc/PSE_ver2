@@ -51,7 +51,7 @@
                 {% endif %}
 
                     <li>
-                        <a style="color:orange;" class = "nav-item" href="{{ url_for('shopping_cart') }}"><b>Your Cart</b></a>
+                        <a style="color:orange;" class = "nav-item" href="{{ url_for('confirm_order') }}"><b>Your Cart</b></a>
                     </li>
                     <li>
                         <a style="color:orange;" class = "nav-item" href="{{ url_for('order_manager') }}"><b>Your Order</b></a>
@@ -108,14 +108,7 @@
         Check your order status
       </a>
       {% else %}
-      <a href="{{ url_for('confirm_order') }}" class="box has-text-centered has-text-primary has-text-weight-bold">
-        Confirm {{current_user.number_of_order}} 
-        {% if current_user.number_of_order <=1 %}
-        order
-        {% else %}
-        orders
-        {% endif %}
-      </a>
+      
       {% endif %}
       {% endif %}
 
